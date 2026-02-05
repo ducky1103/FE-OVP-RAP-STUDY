@@ -1,0 +1,183 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "zpodashboard",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:ovp",
+      "version": "1.20.1",
+      "toolsId": "f762b47b-5321-4f9c-987e-382423725159"
+    },
+    "dataSources": {
+      "ZUI_126_DASHBOARD_BINDING_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_126_DASHBOARD_BINDING_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/ZUI_126_DASHBOARD_BINDING_VAN.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZUI_126_DASHBOARD_BINDING/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZUI_126_DASHBOARD_BINDING_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.33",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ovp": {},
+        "sap.ui.rta": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zpodashboard.i18n.i18n"
+        }
+      },
+      "mainModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    }
+  },
+  "sap.ovp": {
+    "globalFilterModel": "mainModel",
+    "globalFilterEntitySet": "PoDashboard",
+    "containerLayout": "resizable", 
+    "enableLiveFilter": true,
+    "considerAnalyticalParameters": false,
+    "cards": {
+      "card01_list" : {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.list",
+        "settings" : {
+          "title": " Danh Sach Don Hang",
+          "subTitle": "Chi tiet PO",
+          "entitySet" : "PoDashboard",
+          "listType" : "extended",
+          "listFlavor" :"standard",
+          "sortBy" : "TotalAmount",
+          "sortOrder" : "descending",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+        }
+      },
+      "card02_chart":{
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Top Đối Tác (FU24)",
+          "subTitle": "Theo Tổng Chi Tiêu",
+          "entitySet": "PoDashboard",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#default",
+         "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartBySupplier",
+    "identificationAnnotationPath" : "com.sap.vocabularies.UI.v1.Identification",
+    "navigation": "display",
+    "semanticObject": "PurchaseOrder",  
+    "action": "display"  
+        }
+      },
+"card03_timeline": {
+    "model": "mainModel",
+    "template": "sap.ovp.cards.charts.analytical",
+    "settings": {
+        "title": "Biểu đồ chi tiêu",
+        "subTitle": "Theo thời gian",
+        "entitySet": "PoDashboard",
+        "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByDate",
+        "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#default",     
+        "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+    }
+},
+"card04_material": {
+  "model": "mainModel",
+  "template": "sap.ovp.cards.charts.analytical",
+  "settings": {
+    "title": "Cơ Cấu Hàng Hóa",
+    "subTitle": "Top Vật Tư (Donut)",
+    "entitySet": "PoDashboard",
+    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByMaterial", 
+    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#default",
+    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+  }
+}
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  }
+}
