@@ -1,0 +1,24 @@
+specVersion: "4.0"
+metadata:
+  name: zpodashboard
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: S40
+          url: https://s40lp1.ucc.cit.tum.de/
+          client: "324"
+        app:
+          name: F15000
+          description: OVP PO
+          package: ZSP26_GSP15_CAPSTONE
+          transport: S40K916510
+        exclude:
+          - /test/

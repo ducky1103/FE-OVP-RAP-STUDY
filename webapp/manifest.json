@@ -41,11 +41,39 @@
           "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "zui_126_po_demo": {
+        "uri": "/sap/opu/odata4/iwbep/all/srvd/sap/zui_126_po_demo/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation0"
+          ],
+          "localUri": "localService/zui_126_po_demo/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "annotation0": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation0.xml",
+        "settings": {
+          "localUri": "annotations/annotation0.xml"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "PurchaseOrder-display": {
+          "semanticObject": "PurchaseOrder",
+          "action": "display",
+          "title": "PO Dashboard"
+        }
       }
     }
   },
   "sap.ui": {
     "technology": "UI5",
+    "fullWidth": true,
     "icons": {
       "icon": "",
       "favIcon": "",
@@ -103,77 +131,159 @@
       "@i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "uri": "i18n/i18n.properties"
+      },
+      "zui_126_po_demo": {
+        "dataSource": "zui_126_po_demo",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
       }
     },
     "resources": {
       "css": []
     },
     "routing": {
-      "config": {},
-      "routes": [],
-      "targets": {}
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "controlId": "appContent",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "root",
+          "pattern": "",
+          "target": "ovpTarget"
+        },
+        {
+          "name": "toDetail",
+          "pattern": "PurchaseOrder-display:?query:",
+          "target": "detailTarget"
+        }
+      ],
+      "targets": {
+        "ovpTarget": {
+          "type": "Component",
+          "id": "ovpComponent",
+          "name": "sap.ovp.app",
+          "options": {
+            "settings": {
+              "encoding": "utf-8"
+            }
+          }
+        },
+        "detailTarget": {
+          "type": "Component",
+          "id": "detailComponent",
+          "name": "sap.suite.ui.generic.template.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "PoDashboard",
+              "tableSettings": {
+                "type": "ResponsiveTable"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "sap.ovp": {
     "globalFilterModel": "mainModel",
     "globalFilterEntitySet": "PoDashboard",
-    "containerLayout": "resizable", 
+    "containerLayout": "resizable",
     "enableLiveFilter": true,
     "considerAnalyticalParameters": false,
     "cards": {
-      "card01_list" : {
+      "card01_list": {
         "model": "mainModel",
         "template": "sap.ovp.cards.list",
-        "settings" : {
-          "title": " Danh Sach Don Hang",
-          "subTitle": "Chi tiet PO",
-          "entitySet" : "PoDashboard",
-          "listType" : "extended",
-          "listFlavor" :"standard",
-          "sortBy" : "TotalAmount",
-          "sortOrder" : "descending",
-          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+        "settings": {
+          "title": "Purchase Order List",
+          "subTitle": "PO Details",
+          "entitySet": "PoDashboard",
+          "listType": "extended",
+          "listFlavor": "standard",
+          "sortBy": "TotalAmount",
+          "sortOrder": "descending",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "navigation": "display",
+          "semanticObject": "PurchaseOrder",
+          "action": "display"
         }
       },
-      "card02_chart":{
+      "card02_chart": {
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
         "settings": {
-          "title": "Top Đối Tác (FU24)",
-          "subTitle": "Theo Tổng Chi Tiêu",
+          "title": "Top Partners (FU24)",
+          "subTitle": "By Total Spend",
           "entitySet": "PoDashboard",
-          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#default",
-         "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartBySupplier",
-    "identificationAnnotationPath" : "com.sap.vocabularies.UI.v1.Identification",
-    "navigation": "display",
-    "semanticObject": "PurchaseOrder",  
-    "action": "display"  
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartBySupplier",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVBySupplier",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "navigation": "display",
+          "semanticObject": "PurchaseOrder",
+          "action": "display"
         }
       },
-"card03_timeline": {
-    "model": "mainModel",
-    "template": "sap.ovp.cards.charts.analytical",
-    "settings": {
-        "title": "Biểu đồ chi tiêu",
-        "subTitle": "Theo thời gian",
-        "entitySet": "PoDashboard",
-        "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByDate",
-        "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#default",     
-        "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
-    }
-},
-"card04_material": {
-  "model": "mainModel",
-  "template": "sap.ovp.cards.charts.analytical",
-  "settings": {
-    "title": "Cơ Cấu Hàng Hóa",
-    "subTitle": "Top Vật Tư (Donut)",
-    "entitySet": "PoDashboard",
-    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByMaterial", 
-    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#default",
-    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
-  }
-}
+      "card03_timeline": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Spending Analysis",
+          "subTitle": "Over Time",
+          "entitySet": "PoDashboard",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByDate",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByDate",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+        }
+      },
+      "card04_material": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Goods Structure",
+          "subTitle": "Top Materials",
+          "entitySet": "PoDashboard",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByMaterial",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByMaterial",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+        }
+      },
+      "card05_purchgroup": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Purchasing Group",
+          "subTitle": "Spend Ratio",
+          "entitySet": "PoDashboard",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByPurchGroup",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByPurchGroup",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+        }
+      },
+      "card06_user": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "Top Creators",
+          "subTitle": "By PO Volume",
+          "entitySet": "PoDashboard",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByUser",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByUser",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+        }
+      }
+    },
+    "chartSettings": {
+      "showDataLabel": true
     }
   },
   "sap.fiori": {
@@ -181,3 +291,4 @@
     "archeType": "analytical"
   }
 }
+

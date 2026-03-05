@@ -1,18 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/sap/ZUI_126_DASHBOARD_BINDING/$metadata">
-        <edmx:Include Namespace="cds_zui_126_po_dashboard"/>
-    </edmx:Reference>
     <edmx:DataServices>
-        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+        <Schema Namespace="zpodashboard.annotation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zui_126_po_dashboard.PoDashboardType">
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!--                   HEADER INFO                      -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Purchase Order"/>
+                        <PropertyValue Property="TypeNamePlural" String="Purchase Orders"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="PurchaseOrder"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SupplierName"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!--                   DATA POINT                       -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <Annotation Term="UI.DataPoint" Qualifier="Amount">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="Total Amount"/>
+                        <PropertyValue Property="Description" String="Sum of Net Value"/>
+                        <PropertyValue Property="Value" Path="TotalAmount"/>
+                    </Record>
+                </Annotation>
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!--                SELECTION FIELDS                    -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Currency</PropertyPath>
+                        <PropertyPath>Supplier</PropertyPath>
+                        <PropertyPath>PoYear</PropertyPath>
+                        <PropertyPath>PoMonth</PropertyPath>
+                        <PropertyPath>CompanyCode</PropertyPath>
+                        <PropertyPath>PurchaseOrg</PropertyPath>
+                        <PropertyPath>CreatedDate</PropertyPath>
+                        <PropertyPath>TimePeriodCategory</PropertyPath>
+                        <PropertyPath>Material</PropertyPath>
+                        <PropertyPath>ProductName</PropertyPath>
+                        <PropertyPath>PoType</PropertyPath>
+                        <PropertyPath>CreatedBy</PropertyPath>
+                        <PropertyPath>PurchGroup</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!--                    LINE ITEM                       -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <!-- Intent-Based Navigation Button -->
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="PurchaseOrder"/>
+                            <PropertyValue Property="Action" String="display"/>
+                            <PropertyValue Property="Label" String="View Details"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <!-- PO Number -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PurchaseOrder"/>
+                            <PropertyValue Property="Label" String="PO Number"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <!-- Supplier -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Supplier"/>
+                            <PropertyValue Property="Label" String="Supplier"/>
+                        </Record>
+                        <!-- Company Code -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CompanyCode"/>
+                            <PropertyValue Property="Label" String="Company Code"/>
+                        </Record>
+                        <!-- Purchase Org -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PurchaseOrg"/>
+                            <PropertyValue Property="Label" String="Purchase Org"/>
+                        </Record>
+                        <!-- Total Amount -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TotalAmount"/>
+                            <PropertyValue Property="Label" String="Total Amount"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <!-- Created Date -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedDate"/>
+                            <PropertyValue Property="Label" String="Created Date"/>
+                        </Record>
+                        <!-- Time Period -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TimePeriodCategory"/>
+                            <PropertyValue Property="Label" String="Quick Filter (Period)"/>
+                        </Record>
+                        <!-- Material -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Material"/>
+                            <PropertyValue Property="Label" String="Material"/>
+                        </Record>
+                        <!-- Product Name -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProductName"/>
+                            <PropertyValue Property="Label" String="Product Name"/>
+                        </Record>
+                        <!-- PO Type -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PoType"/>
+                            <PropertyValue Property="Label" String="PO Type"/>
+                        </Record>
+                        <!-- Created By -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedBy"/>
+                            <PropertyValue Property="Label" String="Created By"/>
+                        </Record>
+                        <!-- Purchasing Group -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PurchGroup"/>
+                            <PropertyValue Property="Label" String="Purchasing Group"/>
+                        </Record>
+                        <!-- Release Status -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ReleaseStatus"/>
+                            <PropertyValue Property="Label" String="Release Status"/>
+                        </Record>
+                        <!-- Storage Location -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="StorageLocation"/>
+                            <PropertyValue Property="Label" String="Storage Location"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!--                 IDENTIFICATION                     -->
+                <!-- (Used by OVP cards for navigation & quick view)    -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="PurchaseOrder"/>
+                            <PropertyValue Property="Action" String="display"/>
+                            <PropertyValue Property="Label" String="View PO Details"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PurchaseOrder"/>
+                            <PropertyValue Property="Label" String="PO Number"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Supplier"/>
+                            <PropertyValue Property="Label" String="Supplier"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SupplierName"/>
+                            <PropertyValue Property="Label" String="Supplier Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CompanyCode"/>
+                            <PropertyValue Property="Label" String="Company Code"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TotalAmount"/>
+                            <PropertyValue Property="Label" String="Total Amount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CreatedDate"/>
+                            <PropertyValue Property="Label" String="Created Date"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!--                     FACETS                         -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <!-- Header: Total Amount KPI -->
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderInfo"/>
+                            <PropertyValue Property="Purpose" EnumMember="UI.FacetPurpose/Summary"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Amount"/>
+                            <PropertyValue Property="Label" String="Total Amount"/>
+                        </Record>
+                        <!-- General Info Collection -->
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="GeneralInfo"/>
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="GeneralDetails"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                                        <PropertyValue Property="Label" String="Main Details"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!--                     CHARTS                         -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- ── Chart 1: Top Suppliers (Column) ────────────── -->
+                <Annotation Term="UI.Chart" Qualifier="ChartBySupplier">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Top Suppliers"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Supplier</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>TotalAmount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="Supplier"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── Chart 2: Spending Trend by Date (Column) ───── -->
+                <Annotation Term="UI.Chart" Qualifier="ChartByDate">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Spending Trend"/>
+                        <PropertyValue Property="Description" String="By Date"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>CreatedDate</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>TotalAmount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="CreatedDate"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── Chart 3: Top Materials (Column) ────────────── -->
+                <!-- Override CDS #LINE → Column for better OVP display -->
+                <Annotation Term="UI.Chart" Qualifier="ChartByMaterial">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Top Materials"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>ProductName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>TotalAmount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="ProductName"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── Chart 4: Purchasing Groups (Donut) ─────────── -->
+                <!-- Override CDS #BAR → Donut for ratio visualization -->
+                <Annotation Term="UI.Chart" Qualifier="ChartByPurchGroup">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Purchasing Groups"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>PurchGroup</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>TotalAmount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="PurchGroup"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── Chart 5: Purchasing Organizations (Donut) ──── -->
+                <Annotation Term="UI.Chart" Qualifier="ChartByPurchOrg">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Purchasing Organizations"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>PurchaseOrg</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>TotalAmount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="PurchaseOrg"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── Chart 6: Top Creators (Bar) ────────────────── -->
+                <Annotation Term="UI.Chart" Qualifier="ChartByUser">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Top Creators"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>CreatedBy</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>TotalAmount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="CreatedBy"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!--              PRESENTATION VARIANTS                 -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- ── PV Default (LineItem table) ────────────────── -->
+                <Annotation Term="UI.PresentationVariant" Qualifier="default">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="MaxItems" Int="15"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.LineItem</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── PV By Supplier ─────────────────────────────── -->
+                <Annotation Term="UI.PresentationVariant" Qualifier="PVBySupplier">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="MaxItems" Int="10"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#ChartBySupplier</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── PV By Date ─────────────────────────────────── -->
+                <Annotation Term="UI.PresentationVariant" Qualifier="PVByDate">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="MaxItems" Int="12"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="CreatedDate"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#ChartByDate</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── PV By Material ─────────────────────────────── -->
+                <Annotation Term="UI.PresentationVariant" Qualifier="PVByMaterial">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="MaxItems" Int="10"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#ChartByMaterial</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── PV By Purchasing Group ─────────────────────── -->
+                <Annotation Term="UI.PresentationVariant" Qualifier="PVByPurchGroup">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="MaxItems" Int="10"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#ChartByPurchGroup</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── PV By Purchasing Organization ──────────────── -->
+                <Annotation Term="UI.PresentationVariant" Qualifier="PVByPurchOrg">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="MaxItems" Int="10"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#ChartByPurchOrg</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <!-- ── PV By User / Creator ───────────────────────── -->
+                <Annotation Term="UI.PresentationVariant" Qualifier="PVByUser">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="MaxItems" Int="10"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="TotalAmount"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#ChartByUser</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

@@ -40,6 +40,9 @@ server:
           - path: /sap
             url: https://s40.dest
             destination: S40
+          - path: /sap/opu/odata4/iwbep/all/srvd/sap/zui_126_po_demo/0001/
+            url: https://s40lp1.ucc.cit.tum.de
+            client: '324'
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
@@ -48,6 +51,10 @@ server:
           - urlPath: /sap/opu/odata/sap/ZUI_126_DASHBOARD_BINDING
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata4/iwbep/all/srvd/sap/zui_126_po_demo/0001
+            metadataPath: ./webapp/localService/zui_126_po_demo/metadata.xml
+            mockdataPath: ./webapp/localService/zui_126_po_demo/data
             generateMockData: true
         annotations:
           - localPath: ./webapp/localService/mainService/ZUI_126_DASHBOARD_BINDING_VAN.xml
