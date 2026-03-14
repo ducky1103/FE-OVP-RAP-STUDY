@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
     <edmx:DataServices>
         <Schema Namespace="zpodashboard.annotation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
             <Annotations Target="cds_zui_126_po_dashboard.PoDashboardType">
@@ -59,7 +65,7 @@
                     <Collection>
                         <!-- Intent-Based Navigation Button -->
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
-                            <PropertyValue Property="SemanticObject" String="PurchaseOrder"/>
+                            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
                             <PropertyValue Property="Action" String="display"/>
                             <PropertyValue Property="Label" String="View Details"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
@@ -145,7 +151,7 @@
                 <Annotation Term="UI.Identification">
                     <Collection>
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
-                            <PropertyValue Property="SemanticObject" String="PurchaseOrder"/>
+                            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
                             <PropertyValue Property="Action" String="display"/>
                             <PropertyValue Property="Label" String="View PO Details"/>
                         </Record>
@@ -225,7 +231,7 @@
                             <Collection>
                                 <Record Type="UI.ChartDimensionAttributeType">
                                     <PropertyValue Property="Dimension" PropertyPath="Supplier"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -542,6 +548,61 @@
                             </Collection>
                         </PropertyValue>
                     </Record>
+                </Annotation>
+              <Annotation Term="UI.DataPoint" Qualifier="KPITotalSpend">
+    <Record Type="UI.DataPointType">
+        <PropertyValue Property="Value" Path="TotalAmount"/>
+        <PropertyValue Property="Title" String="Total Spending"/>
+        <PropertyValue Property="Description" String="Sum of All PO Values"/>
+        <PropertyValue Property="CriticalityCalculation">
+            <Record Type="UI.CriticalityCalculationType">
+                <PropertyValue Property="ImprovementDirection" 
+                               EnumMember="UI.ImprovementDirectionType/Minimize"/>
+                <PropertyValue Property="ToleranceRangeHighValue" Decimal="5000000"/>
+                <PropertyValue Property="DeviationRangeHighValue" Decimal="10000000"/>
+            </Record>
+        </PropertyValue>
+    </Record>
+</Annotation>
+<Annotation Term="UI.DataPoint" Qualifier="KPIPoCount">
+    <Record Type="UI.DataPointType">
+        <PropertyValue Property="Value" Path="PoItemCount"/>
+        <PropertyValue Property="Title" String="PO Items"/>
+        <PropertyValue Property="Description" String="Total Line Items"/>
+        <PropertyValue Property="CriticalityCalculation">
+            <Record Type="UI.CriticalityCalculationType">
+                <PropertyValue Property="ImprovementDirection" 
+                               EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                <PropertyValue Property="ToleranceRangeLowValue" Decimal="50"/>
+                <PropertyValue Property="DeviationRangeLowValue" Decimal="10"/>
+            </Record>
+        </PropertyValue>
+    </Record>
+</Annotation>
+<Annotation Term="UI.DataPoint" Qualifier="KPIVolume">
+    <Record Type="UI.DataPointType">
+        <PropertyValue Property="Value" Path="TotalVolume"/>
+        <PropertyValue Property="Title" String="Total Volume"/>
+        <PropertyValue Property="Description" String="Sum of Quantities"/>
+        <PropertyValue Property="CriticalityCalculation">
+            <Record Type="UI.CriticalityCalculationType">
+                <PropertyValue Property="ImprovementDirection" 
+                               EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                <PropertyValue Property="ToleranceRangeLowValue" Decimal="100"/>
+                <PropertyValue Property="DeviationRangeLowValue" Decimal="20"/>
+            </Record>
+        </PropertyValue>
+    </Record>
+</Annotation>
+
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
+                            <PropertyValue Property="Action" String="display"/>
+                            <PropertyValue Property="Label" String="View PO Details"/>
+                        </Record>
+                    </Collection>
                 </Annotation>
             </Annotations>
         </Schema>

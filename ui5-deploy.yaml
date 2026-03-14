@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
 specVersion: "4.0"
 metadata:
   name: zpodashboard
@@ -14,11 +16,11 @@ builder:
         target:
           destination: S40
           url: https://s40lp1.ucc.cit.tum.de/
-          client: "324"
+          client: '324'
         app:
-          name: F15000
+          name: ZF15100
           description: OVP PO
           package: ZSP26_GSP15_CAPSTONE
-          transport: S40K916510
+          transport: S40K916763
         exclude:
           - /test/
