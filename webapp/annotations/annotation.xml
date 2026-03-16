@@ -284,7 +284,7 @@
                 <Annotation Term="UI.Chart" Qualifier="ChartByMaterial">
                     <Record Type="UI.ChartDefinitionType">
                         <PropertyValue Property="Title" String="Top Materials"/>
-                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
                         <PropertyValue Property="Dimensions">
                             <Collection>
                                 <PropertyPath>ProductName</PropertyPath>
@@ -566,7 +566,7 @@
 </Annotation>
 <Annotation Term="UI.DataPoint" Qualifier="KPIPoCount">
     <Record Type="UI.DataPointType">
-        <PropertyValue Property="Value" Path="PoItemCount"/>
+        <PropertyValue Property="Value" Path="TotalAmount"/>
         <PropertyValue Property="Title" String="PO Items"/>
         <PropertyValue Property="Description" String="Total Line Items"/>
         <PropertyValue Property="CriticalityCalculation">

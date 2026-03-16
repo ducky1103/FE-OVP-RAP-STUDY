@@ -199,6 +199,7 @@
     "containerLayout": "resizable",
     "enableLiveFilter": true,
     "considerAnalyticalParameters": false,
+     
     "cards": {
       "card01_list": {
         "model": "mainModel",
@@ -229,8 +230,8 @@
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
           "semanticObject": "ZSO_PO_F15200",
           "action": "display",
-          "valueSelectionInfo": "Total spend across all POs",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#KPITotalSpend"
+          "valueSelectionInfo": "Total spend across all POs"
+       
         }
       },
       "card03_timeline": {
@@ -243,7 +244,7 @@
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByDate",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByDate",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#KPITotalSpend"
+       "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Amount"
         }
       },
       "card04_material": {
@@ -255,8 +256,8 @@
           "entitySet": "PoDashboard",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByMaterial",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByMaterial",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#KPITotalSpend"
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+      
         }
       },
       "card05_purchgroup": {
@@ -268,8 +269,8 @@
           "entitySet": "PoDashboard",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByPurchGroup",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByPurchGroup",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#KPITotalSpend"
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+ 
         }
       },
       "card06_user": {
@@ -281,8 +282,8 @@
           "entitySet": "PoDashboard",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByUser",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByUser",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#KPITotalSpend"
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+    
         }
       }
     },
