@@ -42,22 +42,18 @@
                 <!--                SELECTION FIELDS                    -->
                 <!-- ═══════════════════════════════════════════════════ -->
                 <Annotation Term="UI.SelectionFields">
-                    <Collection>
-                        <PropertyPath>Currency</PropertyPath>
-                        <PropertyPath>Supplier</PropertyPath>
-                        <PropertyPath>PoYear</PropertyPath>
-                        <PropertyPath>PoMonth</PropertyPath>
-                        <PropertyPath>CompanyCode</PropertyPath>
-                        <PropertyPath>PurchaseOrg</PropertyPath>
-                        <PropertyPath>CreatedDate</PropertyPath>
-                        <PropertyPath>TimePeriodCategory</PropertyPath>
-                        <PropertyPath>Material</PropertyPath>
-                        <PropertyPath>ProductName</PropertyPath>
-                        <PropertyPath>PoType</PropertyPath>
-                        <PropertyPath>CreatedBy</PropertyPath>
-                        <PropertyPath>PurchGroup</PropertyPath>
-                    </Collection>
-                </Annotation>
+    <Collection>
+        <PropertyPath>Supplier</PropertyPath>
+        <PropertyPath>CreatedDate</PropertyPath>
+        <PropertyPath>TimePeriodCategory</PropertyPath>
+        <PropertyPath>Material</PropertyPath>
+        <PropertyPath>PoType</PropertyPath>
+        <PropertyPath>CreatedBy</PropertyPath>
+        <PropertyPath>PurchGroup</PropertyPath>
+    </Collection>
+</Annotation>
+
+              
                 <!-- ═══════════════════════════════════════════════════ -->
                 <!--                    LINE ITEM                       -->
                 <!-- ═══════════════════════════════════════════════════ -->
@@ -65,11 +61,12 @@
                     <Collection>
                         <!-- Intent-Based Navigation Button -->
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
-                            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
-                            <PropertyValue Property="Action" String="display"/>
-                            <PropertyValue Property="Label" String="View Details"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
-                        </Record>
+    <PropertyValue Property="SemanticObject" String="PurchaseOrder"/>
+    <PropertyValue Property="Action" String="display"/>
+    <PropertyValue Property="Label" String="Open in ME23N"/>
+    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+
                         <!-- PO Number -->
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="PurchaseOrder"/>
@@ -149,38 +146,35 @@
                 <!-- (Used by OVP cards for navigation & quick view)    -->
                 <!-- ═══════════════════════════════════════════════════ -->
                 <Annotation Term="UI.Identification">
-                    <Collection>
-                        <Record Type="UI.DataFieldForIntentBasedNavigation">
-                            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
-                            <PropertyValue Property="Action" String="display"/>
-                            <PropertyValue Property="Label" String="View PO Details"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="PurchaseOrder"/>
-                            <PropertyValue Property="Label" String="PO Number"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="Supplier"/>
-                            <PropertyValue Property="Label" String="Supplier"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="SupplierName"/>
-                            <PropertyValue Property="Label" String="Supplier Name"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="CompanyCode"/>
-                            <PropertyValue Property="Label" String="Company Code"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="TotalAmount"/>
-                            <PropertyValue Property="Label" String="Total Amount"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="CreatedDate"/>
-                            <PropertyValue Property="Label" String="Created Date"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
+    <Collection>
+          <Record Type="UI.DataFieldForIntentBasedNavigation">
+            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
+            <PropertyValue Property="Action" String="display"/>
+            <PropertyValue Property="Label" String="View PO Details"/>
+        </Record>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="PurchaseOrder"/>
+            <PropertyValue Property="Label" String="PO Number"/>
+        </Record>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="Supplier"/>
+            <PropertyValue Property="Label" String="Supplier"/>
+        </Record>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="SupplierName"/>
+            <PropertyValue Property="Label" String="Supplier Name"/>
+        </Record>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="TotalAmount"/>
+            <PropertyValue Property="Label" String="Total Amount"/>
+        </Record>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="CreatedDate"/>
+            <PropertyValue Property="Label" String="Created Date"/>
+        </Record>
+    </Collection>
+</Annotation>
+
                 <!-- ═══════════════════════════════════════════════════ -->
                 <!--                     FACETS                         -->
                 <!-- ═══════════════════════════════════════════════════ -->
@@ -595,15 +589,7 @@
     </Record>
 </Annotation>
 
-                <Annotation Term="UI.Identification">
-                    <Collection>
-                        <Record Type="UI.DataFieldForIntentBasedNavigation">
-                            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
-                            <PropertyValue Property="Action" String="display"/>
-                            <PropertyValue Property="Label" String="View PO Details"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
+               
             </Annotations>
         </Schema>
     </edmx:DataServices>

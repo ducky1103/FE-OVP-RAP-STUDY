@@ -199,26 +199,35 @@
     "containerLayout": "resizable",
     "enableLiveFilter": true,
     "considerAnalyticalParameters": false,
-     
+     "filterSettings": {
+    "hiddenFilters": {
+      "parameters": [
+        { "path": "Currency",    "value": "VND"  },
+        { "path": "CompanyCode", "value": "FU24" }
+      ],
+      "ranges": []
+    }
+  },
     "cards": {
       "card01_list": {
-        "model": "mainModel",
-        "template": "sap.ovp.cards.list",
-        "settings": {
-          "title": "Purchase Order List",
-          "subTitle": "PO Details",
-          "entitySet": "PoDashboard",
-          "listType": "extended",
-          "listFlavor": "standard",
-          "sortBy": "TotalAmount",
-          "sortOrder": "descending",
-          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "navigation": "display",
-          "semanticObject": "ZSO_PO_F15200",
-          "action": "display"
-        }
-      },
+  "model": "mainModel",
+  "template": "sap.ovp.cards.list",
+  "settings": {
+    "title": "Purchase Order List",
+    "subTitle": "PO Details",
+    "entitySet": "PoDashboard",
+    "listType": "extended",
+    "listFlavor": "standard",
+    "sortBy": "TotalAmount",
+    "sortOrder": "descending",
+    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+    "navigation": "display",
+    "semanticObject": "PurchaseOrder",
+    "action": "display"
+  }
+},
+
       "card02_chart": {
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
