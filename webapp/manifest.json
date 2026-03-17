@@ -64,8 +64,8 @@
     "crossNavigation": {
       "inbounds": {
         "PurchaseOrder-display": {
-          "semanticObject": "ZSO_PO_F15200",
-           "action": "overview",
+          "semanticObject": "ZSO_PO_F15000",
+           "action": "display",
           "title": "PO Dashboard"
         }
       }
@@ -198,7 +198,7 @@
     "globalFilterEntitySet": "PoDashboard",
     "containerLayout": "resizable",
     "enableLiveFilter": true,
-    "considerAnalyticalParameters": false,
+    "considerAnalyticalParameters": true,
      "filterSettings": {
     "hiddenFilters": {
       "parameters": [
@@ -223,7 +223,7 @@
     "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
     "navigation": "display",
-    "semanticObject": "PurchaseOrder",
+    "semanticObject": "ZSO_PO_F15200",
     "action": "display"
   }
 },
@@ -232,11 +232,12 @@
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
         "settings": {
-          "title": "Top Partners (FU24)",
+          "title": "Top Partners",
           "entitySet": "PoDashboard",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartBySupplier",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVBySupplier",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Default",
           "semanticObject": "ZSO_PO_F15200",
           "action": "display",
           "valueSelectionInfo": "Total spend across all POs"
