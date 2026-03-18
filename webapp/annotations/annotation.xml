@@ -44,7 +44,7 @@
                 <Annotation Term="UI.SelectionFields">
     <Collection>
         <PropertyPath>Supplier</PropertyPath>
-        <PropertyPath>CreatedDate</PropertyPath>
+        <PropertyPath>CreatedDate</PropertyPath>  
         <PropertyPath>TimePeriodCategory</PropertyPath>
         <PropertyPath>Material</PropertyPath>
         <PropertyPath>PoType</PropertyPath>
@@ -61,9 +61,9 @@
                     <Collection>
                         <!-- Intent-Based Navigation Button -->
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
-    <PropertyValue Property="SemanticObject" String="PurchaseOrder"/>
+    <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
     <PropertyValue Property="Action" String="display"/>
-    <PropertyValue Property="Label" String="Open in ME23N"/>
+    <PropertyValue Property="Label" String="Open in List Purchase Order"/>
     <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
 </Record>
 
@@ -560,7 +560,7 @@
 </Annotation>
 <Annotation Term="UI.DataPoint" Qualifier="KPIPoCount">
     <Record Type="UI.DataPointType">
-        <PropertyValue Property="Value" Path="TotalAmount"/>
+        <PropertyValue Property="Value" Path="PoCount"/>
         <PropertyValue Property="Title" String="PO Items"/>
         <PropertyValue Property="Description" String="Total Line Items"/>
         <PropertyValue Property="CriticalityCalculation">
@@ -588,6 +588,7 @@
         </PropertyValue>
     </Record>
 </Annotation>
+
 
                
             </Annotations>

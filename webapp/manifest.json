@@ -63,7 +63,7 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "PurchaseOrder-display": {
+        "ZSO_PO_F15000-display": {
           "semanticObject": "ZSO_PO_F15000",
            "action": "display",
           "title": "PO Dashboard"
@@ -199,15 +199,7 @@
     "containerLayout": "resizable",
     "enableLiveFilter": true,
     "considerAnalyticalParameters": true,
-     "filterSettings": {
-    "hiddenFilters": {
-      "parameters": [
-        { "path": "Currency",    "value": "VND"  },
-        { "path": "CompanyCode", "value": "FU24" }
-      ],
-      "ranges": []
-    }
-  },
+
     "cards": {
       "card01_list": {
   "model": "mainModel",
@@ -237,7 +229,6 @@
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartBySupplier",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVBySupplier",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Default",
           "semanticObject": "ZSO_PO_F15200",
           "action": "display",
           "valueSelectionInfo": "Total spend across all POs"
