@@ -245,7 +245,7 @@
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByDate",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByDate",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-       "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Amount"
+     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Amount"
         }
       },
       "card04_material": {
