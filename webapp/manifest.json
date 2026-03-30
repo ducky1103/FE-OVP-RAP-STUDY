@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "ZUI_126_DASHBOARD_BINDING_VAN": {
-        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_126_DASHBOARD_BINDING_VAN',Version='0001')/$value/",
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_PO_OVP_BINDING_VAN',Version='0001')/$value/",
         "type": "ODataAnnotation",
         "settings": {
           "localUri": "localService/mainService/ZUI_126_DASHBOARD_BINDING_VAN.xml"
@@ -31,7 +31,7 @@
         }
       },
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZUI_126_DASHBOARD_BINDING/",
+        "uri": "/sap/opu/odata/sap/ZUI_PO_OVP_BINDING/",
         "type": "OData",
         "settings": {
           "annotations": [
@@ -65,7 +65,7 @@
       "inbounds": {
         "ZSO_PO_F15000-display": {
           "semanticObject": "ZSO_PO_F15000",
-           "action": "display",
+          "action": "display",
           "title": "PO Dashboard"
         }
       }
@@ -183,7 +183,7 @@
           "name": "sap.suite.ui.generic.template.ListReport",
           "options": {
             "settings": {
-              "entitySet": "PoDashboard",
+              "entitySet": "PoOVP",
               "tableSettings": {
                 "type": "ResponsiveTable"
               }
@@ -195,44 +195,41 @@
   },
   "sap.ovp": {
     "globalFilterModel": "mainModel",
-    "globalFilterEntitySet": "PoDashboard",
+    "globalFilterEntitySet": "PoOVP",
     "containerLayout": "resizable",
     "enableLiveFilter": true,
     "considerAnalyticalParameters": true,
-
     "cards": {
       "card01_list": {
-  "model": "mainModel",
-  "template": "sap.ovp.cards.list",
-  "settings": {
-    "title": "Purchase Order List",
-    "subTitle": "PO Details",
-    "entitySet": "PoDashboard",
-    "listType": "extended",
-    "listFlavor": "standard",
-    "sortBy": "TotalAmount",
-    "sortOrder": "descending",
-    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
-    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-    "navigation": "display",
-    "semanticObject": "ZSO_PO_F15200",
-    "action": "display"
-  }
-},
-
+        "model": "mainModel",
+        "template": "sap.ovp.cards.list",
+        "settings": {
+          "title": "Purchase Order List",
+          "subTitle": "PO Details",
+          "entitySet": "PoOVP",
+          "listType": "extended",
+          "listFlavor": "standard",
+          "sortBy": "TotalAmount",
+          "sortOrder": "descending",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "navigation": "display",
+          "semanticObject": "ZSO_PO_F15200",
+          "action": "display"
+        }
+      },
       "card02_chart": {
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
         "settings": {
           "title": "Top Partners",
-          "entitySet": "PoDashboard",
+          "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartBySupplier",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVBySupplier",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
           "semanticObject": "ZSO_PO_F15200",
           "action": "display",
           "valueSelectionInfo": "Total spend across all POs"
-       
         }
       },
       "card03_timeline": {
@@ -241,11 +238,11 @@
         "settings": {
           "title": "Spending Analysis",
           "subTitle": "Over Time",
-          "entitySet": "PoDashboard",
+          "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByDate",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByDate",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Amount"
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Amount"
         }
       },
       "card04_material": {
@@ -254,11 +251,10 @@
         "settings": {
           "title": "Goods Structure",
           "subTitle": "Top Materials",
-          "entitySet": "PoDashboard",
+          "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByMaterial",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByMaterial",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
-      
         }
       },
       "card05_purchgroup": {
@@ -267,11 +263,10 @@
         "settings": {
           "title": "Purchasing Group",
           "subTitle": "Spend Ratio",
-          "entitySet": "PoDashboard",
+          "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByPurchGroup",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByPurchGroup",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
- 
         }
       },
       "card06_user": {
@@ -280,11 +275,10 @@
         "settings": {
           "title": "Top Creators",
           "subTitle": "By PO Volume",
-          "entitySet": "PoDashboard",
+          "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByUser",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByUser",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
-    
         }
       }
     },
@@ -297,4 +291,3 @@
     "archeType": "analytical"
   }
 }
-

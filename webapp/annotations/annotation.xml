@@ -5,7 +5,7 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema Namespace="zpodashboard.annotation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-            <Annotations Target="cds_zui_126_po_dashboard.PoDashboardType">
+            <Annotations Target="ZUI_PO_OVP_BINDING_SRV.PoOVPType">
                 <Annotation Term="UI.HeaderInfo">
                     <Record Type="UI.HeaderInfoType">
                         <PropertyValue Property="TypeName" String="Purchase Order"/>
@@ -22,7 +22,6 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-
             </Annotations>
         </Schema>
     </edmx:DataServices>
