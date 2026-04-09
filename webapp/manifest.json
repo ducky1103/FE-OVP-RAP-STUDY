@@ -16,13 +16,6 @@
       "toolsId": "f762b47b-5321-4f9c-987e-382423725159"
     },
     "dataSources": {
-      "ZUI_126_DASHBOARD_BINDING_VAN": {
-        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_PO_OVP_BINDING_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/mainService/ZUI_126_DASHBOARD_BINDING_VAN.xml"
-        }
-      },
       "annotation": {
         "type": "ODataAnnotation",
         "uri": "annotations/annotation.xml",
@@ -35,22 +28,11 @@
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZUI_126_DASHBOARD_BINDING_VAN",
+            "ZUI_PO_OVP_BINDING_VAN",
             "annotation"
           ],
           "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
-        }
-      },
-      "zui_126_po_demo": {
-        "uri": "/sap/opu/odata4/iwbep/all/srvd/sap/zui_126_po_demo/0001/",
-        "type": "OData",
-        "settings": {
-          "annotations": [
-            "annotation0"
-          ],
-          "localUri": "localService/zui_126_po_demo/metadata.xml",
-          "odataVersion": "4.0"
         }
       },
       "annotation0": {
@@ -58,6 +40,13 @@
         "uri": "annotations/annotation0.xml",
         "settings": {
           "localUri": "annotations/annotation0.xml"
+        }
+      },
+      "ZUI_PO_OVP_BINDING_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_PO_OVP_BINDING_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/ZUI_PO_OVP_BINDING_VAN.xml"
         }
       }
     },
@@ -132,15 +121,10 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "uri": "i18n/i18n.properties"
       },
-      "zui_126_po_demo": {
-        "dataSource": "zui_126_po_demo",
+      "": {
+        "dataSource": "mainService",
         "preload": true,
-        "settings": {
-          "synchronizationMode": "None",
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true
-        }
+        "settings": {}
       }
     },
     "resources": {
@@ -242,7 +226,9 @@
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByDate",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByDate",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Amount"
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Amount",
+          "semanticObject": "ZSO_PO_F15200",
+          "action": "display"
         }
       },
       "card04_material": {
@@ -254,7 +240,9 @@
           "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByMaterial",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByMaterial",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "semanticObject": "ZSO_PO_F15200",
+          "action": "display"
         }
       },
       "card05_purchgroup": {
@@ -266,7 +254,9 @@
           "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByPurchGroup",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByPurchGroup",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "semanticObject": "ZSO_PO_F15200",
+          "action": "display"
         }
       },
       "card06_user": {
@@ -278,7 +268,21 @@
           "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByUser",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByUser",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "semanticObject": "ZSO_PO_F15200",
+          "action": "display"
+        }
+      },
+      "ALPCard": {
+        "template": "sap.ovp.cards.charts.analytical",
+        "model": "mainModel",
+        "settings": {
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ALPQualifier",
+          "entitySet": "POAnalytics",
+          "title": "ALP Card",
+          "subTitle": "ALP Card",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ALPQualifier",
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#ALPDP"
         }
       }
     },

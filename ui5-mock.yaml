@@ -9,7 +9,7 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertErrors: false
         ui5:
           path:
             - /resources
@@ -17,11 +17,9 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: https://s40.dest
-            destination: S40
-          - path: /sap/opu/odata4/iwbep/all/srvd/sap/zui_126_po_demo/0001/
-            url: https://s40lp1.ucc.cit.tum.de
+            url: https://s40lp1.ucc.cit.tum.de/
             client: '324'
+            destination: S40
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -38,14 +36,10 @@ server:
       configuration:
         mountPath: /
         services:
-          - urlPath: /sap/opu/odata/sap/ZUI_126_DASHBOARD_BINDING
+          - urlPath: /sap/opu/odata/sap/ZUI_PO_OVP_BINDING
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
-          - urlPath: /sap/opu/odata4/iwbep/all/srvd/sap/zui_126_po_demo/0001
-            metadataPath: ./webapp/localService/zui_126_po_demo/metadata.xml
-            mockdataPath: ./webapp/localService/zui_126_po_demo/data
-            generateMockData: true
         annotations:
-          - localPath: ./webapp/localService/mainService/ZUI_126_DASHBOARD_BINDING_VAN.xml
-            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_126_DASHBOARD_BINDING_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/mainService/ZUI_PO_OVP_BINDING_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_PO_OVP_BINDING_VAN',Version='0001')/$value/
