@@ -26,53 +26,245 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema Namespace="zui_po_ovp_binding_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-            <Annotations Target="cds_zui_po_ovp.POAnalyticsType/ID">
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_SUPPLIERType/PurchGroupName">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_zui_po_ovp.POAnalyticsType">
-                <Annotation Term="UI.HeaderInfo">
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_SUPPLIERType/PoYear">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_SUPPLIERType/PoMonth">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_SUPPLIERType/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_SUPPLIERType">
+                <Annotation Term="UI.DataPoint" Qualifier="KPITotalAmount">
                     <Record>
-                        <PropertyValue Property="TypeName" String="Purchase Order"/>
-                        <PropertyValue Property="TypeNamePlural" String="Purchase Orders"/>
+                        <PropertyValue Property="Value" Path="TotalAmount"/>
+                        <PropertyValue Property="Title" String=""/>
+                        <PropertyValue Property="Description" String=""/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Minimize"/>
+                                <PropertyValue Property="DeviationRangeHighValue" Decimal="1500000000000"/>
+                                <PropertyValue Property="ToleranceRangeHighValue" Decimal="500000000000"/>
+                            </Record>
+                        </PropertyValue>
                     </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="KPITotalQuantity">
+                    <Record>
+                        <PropertyValue Property="Value" Path="TotalQuantity"/>
+                        <PropertyValue Property="Title" String=""/>
+                        <PropertyValue Property="Description" String=""/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="20"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="100"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="FG_Basic">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="PoNumber"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="PoItem"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="CreationDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="Material"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="ProductName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="PoType"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="CreatedBy"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="ReleaseStatus"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="TotalAmount"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="TotalQuantity"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="FG_Org">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="CompanyCode"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="CompanyName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="PurchasingGroup"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="Plant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="PurchaseOrg"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="StorageLocation"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="FG_Supplier">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="Supplier"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String=""/>
+                                    <PropertyValue Property="Value" Path="SupplierName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="PoNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="PoItem"/>
+                        </Record>
+                    </Collection>
                 </Annotation>
                 <Annotation Term="UI.LineItem">
                     <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="PurchaseOrder"/>
+                        <Record Type="UI.DataFieldWithIntentBasedNavigation">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
+                            <PropertyValue Property="Action" String="display"/>
+                            <PropertyValue Property="Value" Path="PoNumber"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="PurchaseOrderItem"/>
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="PoNumber"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="TotalPOValue"/>
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="PoItem"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
                             <PropertyValue Property="Value" Path="Supplier"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
                             <PropertyValue Property="Value" Path="CompanyCode"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="PurchasingOrganization"/>
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="CreationDate"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="DocumentCurrency"/>
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="Material"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="PoType"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="PurchasingGroup"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="CreatedBy"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="Plant"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="PurchaseOrg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="ReleaseStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="StorageLocation"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="TotalAmount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="Value" Path="TotalQuantity"/>
                         </Record>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>Supplier</PropertyPath>
-                        <PropertyPath>CompanyCode</PropertyPath>
-                        <PropertyPath>PurchasingOrganization</PropertyPath>
+                        <PropertyPath>CreationDate</PropertyPath>
+                        <PropertyPath>Material</PropertyPath>
+                        <PropertyPath>PoType</PropertyPath>
+                        <PropertyPath>PurchasingGroup</PropertyPath>
+                        <PropertyPath>CreatedBy</PropertyPath>
+                        <PropertyPath>TimePeriodCategory</PropertyPath>
                     </Collection>
                 </Annotation>
+                <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
             </Annotations>
             <Annotations Target="cds_zui_po_ovp.PoOVPType/PoYear">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_po_ovp.PoOVPType/PoMonth">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_po_ovp.PoOVPType/MonthYear">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_po_ovp.PoOVPType/ProductName">
@@ -85,19 +277,24 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_po_ovp.PoOVPType">
-                <Annotation Term="UI.Chart" Qualifier="KPIChartSpendTrend">
+                <Annotation Term="UI.Chart" Qualifier="ChartByPoType">
                     <Record Type="UI.ChartDefinitionType">
-                        <PropertyValue Property="Title" String="Spending Trend"/>
-                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+                        <PropertyValue Property="Title" String="Spending by PO Type"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
                         <PropertyValue Property="Dimensions">
                             <Collection>
-                                <PropertyPath>CreationDate</PropertyPath>
+                                <PropertyPath>PoType</PropertyPath>
+                                <PropertyPath>MonthYear</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="DimensionAttributes">
                             <Collection>
                                 <Record Type="UI.ChartDimensionAttributeType">
-                                    <PropertyValue Property="Dimension" PropertyPath="CreationDate"/>
+                                    <PropertyValue Property="Dimension" PropertyPath="PoType"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
+                                </Record>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="MonthYear"/>
                                     <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
                                 </Record>
                             </Collection>
@@ -216,17 +413,17 @@
                 <Annotation Term="UI.Chart" Qualifier="ChartByDate">
                     <Record Type="UI.ChartDefinitionType">
                         <PropertyValue Property="Title" String="Spending Trend"/>
-                        <PropertyValue Property="Description" String="By Date"/>
+                        <PropertyValue Property="Description" String="By Month"/>
                         <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
                         <PropertyValue Property="Dimensions">
                             <Collection>
-                                <PropertyPath>CreationDate</PropertyPath>
+                                <PropertyPath>MonthYear</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="DimensionAttributes">
                             <Collection>
                                 <Record Type="UI.ChartDimensionAttributeType">
-                                    <PropertyValue Property="Dimension" PropertyPath="CreationDate"/>
+                                    <PropertyValue Property="Dimension" PropertyPath="MonthYear"/>
                                     <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
                                 </Record>
                             </Collection>
@@ -306,6 +503,15 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String=""/>
+                            <PropertyValue Property="ID" String="HeaderInfo"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Amount"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
                 <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.CollectionFacet">
@@ -320,15 +526,6 @@
                                     </Record>
                                 </Collection>
                             </PropertyValue>
-                        </Record>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="UI.HeaderFacets">
-                    <Collection>
-                        <Record Type="UI.ReferenceFacet">
-                            <PropertyValue Property="Label" String=""/>
-                            <PropertyValue Property="ID" String="HeaderInfo"/>
-                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Amount"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -386,6 +583,24 @@
                         </Record>
                     </Collection>
                 </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="PVByPoType">
+                    <Record>
+                        <PropertyValue Property="MaxItems" Int="12"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="MonthYear"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#ChartByPoType</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
                 <Annotation Term="UI.PresentationVariant" Qualifier="PVKPIVolumeByDate">
                     <Record>
                         <PropertyValue Property="MaxItems" Int="6"/>
@@ -418,24 +633,6 @@
                         <PropertyValue Property="Visualizations">
                             <Collection>
                                 <AnnotationPath>@UI.Chart#KPIChartCountSupplier</AnnotationPath>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="UI.PresentationVariant" Qualifier="PVKPISpendTrend">
-                    <Record>
-                        <PropertyValue Property="MaxItems" Int="6"/>
-                        <PropertyValue Property="SortOrder">
-                            <Collection>
-                                <Record Type="Common.SortOrderType">
-                                    <PropertyValue Property="Property" PropertyPath=""/>
-                                    <PropertyValue Property="Descending" Bool="false"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="Visualizations">
-                            <Collection>
-                                <AnnotationPath>@UI.Chart#KPIChartSpendTrend</AnnotationPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -482,7 +679,7 @@
                         <PropertyValue Property="SortOrder">
                             <Collection>
                                 <Record Type="Common.SortOrderType">
-                                    <PropertyValue Property="Property" PropertyPath="CreationDate"/>
+                                    <PropertyValue Property="Property" PropertyPath="PoMonth"/>
                                     <PropertyValue Property="Descending" Bool="true"/>
                                 </Record>
                             </Collection>

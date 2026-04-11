@@ -184,24 +184,6 @@
     "enableLiveFilter": true,
     "considerAnalyticalParameters": true,
     "cards": {
-      "card01_list": {
-        "model": "mainModel",
-        "template": "sap.ovp.cards.list",
-        "settings": {
-          "title": "Purchase Order List",
-          "subTitle": "PO Details",
-          "entitySet": "PoOVP",
-          "listType": "extended",
-          "listFlavor": "standard",
-          "sortBy": "TotalAmount",
-          "sortOrder": "descending",
-          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "navigation": "display",
-          "semanticObject": "ZSO_PO_F15200",
-          "action": "display"
-        }
-      },
       "card02_chart": {
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
@@ -259,30 +241,15 @@
           "action": "display"
         }
       },
-      "card06_user": {
-        "model": "mainModel",
+      "card_po_type": {
         "template": "sap.ovp.cards.charts.analytical",
+        "model": "mainModel",
         "settings": {
-          "title": "Top Creators",
-          "subTitle": "By PO Volume",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByPoType",
           "entitySet": "PoOVP",
-          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByUser",
-          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByUser",
+          "title": "Spending by PO Type",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "semanticObject": "ZSO_PO_F15200",
-          "action": "display"
-        }
-      },
-      "ALPCard": {
-        "template": "sap.ovp.cards.charts.analytical",
-        "model": "mainModel",
-        "settings": {
-          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ALPQualifier",
-          "entitySet": "POAnalytics",
-          "title": "ALP Card",
-          "subTitle": "ALP Card",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ALPQualifier",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#ALPDP"
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByPoType"
         }
       }
     },

@@ -22,59 +22,6 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-            </Annotations>
-            <Annotations Target="cds_zui_po_ovp.POAnalyticsType">
-                <Annotation Term="UI.Chart" Qualifier="ALPQualifier">
-                    <Record Type="UI.ChartDefinitionType">
-                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
-                        <PropertyValue Property="Title" String="Chart ALP"/>
-                        <PropertyValue Property="Description" String="ALP Supplier"/>
-                        <PropertyValue Property="Dimensions">
-                            <Collection>
-                                <PropertyPath>Supplier</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="DimensionAttributes">
-                            <Collection>
-                                <Record Type="UI.ChartDimensionAttributeType">
-                                    <PropertyValue Property="Dimension" PropertyPath="Supplier"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="Measures">
-                            <Collection>
-                                <PropertyPath>TotalPOValue</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
-                        <PropertyValue Property="MeasureAttributes">
-                            <Collection>
-                                <Record Type="UI.ChartMeasureAttributeType">
-                                    <PropertyValue Property="Measure" PropertyPath="TotalPOValue"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="UI.DataPoint" Qualifier="ALPDP">
-                    <Record Type="UI.DataPointType">
-                        <PropertyValue Property="Value" Path="Supplier"/>
-                        <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Critical"/>
-                        <PropertyValue Property="Title" String="ALP Supplier DP"/>
-                        <PropertyValue Property="Description" String="ALP Supplier DP"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="UI.Identification" Qualifier="ALPQualifier">
-                    <Collection>
-                        <Record Type="UI.DataFieldForIntentBasedNavigation">
-                            <PropertyValue Property="SemanticObject" String="ZSO_PO_F15200"/>
-                            <PropertyValue Property="Label" String="Supplier"/>
-                            <PropertyValue Property="Action" String="display"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
-            </Annotations>
-        </Schema>
+            </Annotations> </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
