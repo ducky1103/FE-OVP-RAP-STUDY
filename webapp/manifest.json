@@ -224,7 +224,15 @@
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByMaterial",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
           "semanticObject": "ZSO_PO_F15200",
-          "action": "display"
+          "action": "display",
+             "chartProperties": {
+            "plotArea": {
+              "dataLabel": {
+                "visible": true,
+                "type": "percentage"
+              }
+            }
+          }
         }
       },
       "card05_purchgroup": {
