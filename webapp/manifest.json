@@ -223,7 +223,7 @@
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByMaterial",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByMaterial",
           "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "semanticObject": "ZSO_PO_F15200",
+          "semanticObject": "ZSO_PO_F15500",
           "action": "display",
              "chartProperties": {
             "plotArea": {
