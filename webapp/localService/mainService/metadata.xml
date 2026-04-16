@@ -114,6 +114,28 @@
                 <Property Name="PhoneNumberExtension" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Nebenstelle" sap:quickinfo="Telefonnummer: Nebenstelle"/>
                 <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="E-Mail-Adresse"/>
             </EntityType>
+            <EntityType Name="PO_ALP_MATERIALType" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Material" sap:heading="" sap:quickinfo="Materialnummer" sap:value-list="standard"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Werk" sap:heading="" sap:value-list="standard"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Buchungskreis" sap:heading=""/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Warengruppe"/>
+                <Property Name="PurchaseOrderType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Einkaufsbelegart" sap:heading="" sap:value-list="standard"/>
+                <Property Name="ProductName" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Materialkurztext" sap:heading=""/>
+                <Property Name="MaterialType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Materialart" sap:heading=""/>
+                <Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Einkäufergruppe" sap:heading=""/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Angelegt am" sap:heading="" sap:quickinfo="Anlegedatum des Einkaufsbelegs"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Angelegt von" sap:quickinfo="Benutzer der Person, die einen Einkaufsbeleg angelegt hat"/>
+                <Property Name="TimePeriodCategory" Type="Edm.String" MaxLength="13" sap:aggregation-role="dimension" sap:filter-restriction="single-value" sap:label="" sap:value-list="fixed-values"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Bestellmengeneinheit" sap:semantics="unit-of-measure"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Währung" sap:quickinfo="Währungsschlüssel" sap:semantics="currency-code"/>
+                <Property Name="Vendor" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Lieferant" sap:quickinfo="Kontonummer des Lieferanten"/>
+                <Property Name="TotalVolume" Type="Edm.Decimal" Precision="31" Scale="3" sap:aggregation-role="measure" sap:unit="Unit" sap:filterable="false"/>
+                <Property Name="ItemCount" Type="Edm.Int32" sap:aggregation-role="measure" sap:filterable="false"/>
+            </EntityType>
             <EntityType Name="PO_ALP_SUPPLIERType" sap:semantics="aggregate" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="ID"/>
@@ -130,7 +152,7 @@
                 <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Werk" sap:heading="" sap:value-list="standard"/>
                 <Property Name="PurchaseOrg" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="EinkOrganisation" sap:quickinfo="Einkaufsorganisation"/>
                 <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Lagerort"/>
-                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Angelegt am" sap:heading="" sap:quickinfo="Anlegedatum des Einkaufsbelegs"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Angelegt am" sap:quickinfo="Anlegedatum des Einkaufsbelegs"/>
                 <Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="ProductName" sap:label="Material" sap:quickinfo="Materialnummer" sap:value-list="standard"/>
                 <Property Name="ProductName" Type="Edm.String" MaxLength="40" sap:label="Materialkurztext" sap:heading=""/>
                 <Property Name="PoType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Einkaufsbelegart" sap:heading="" sap:value-list="standard"/>
@@ -141,6 +163,8 @@
                 <Property Name="PoMonth" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension"/>
                 <Property Name="TotalAmount" Type="Edm.Decimal" Precision="31" Scale="2" sap:aggregation-role="measure" sap:unit="Currency" sap:variable-scale="true" sap:filterable="false"/>
                 <Property Name="TotalQuantity" Type="Edm.Decimal" Precision="31" Scale="3" sap:aggregation-role="measure" sap:unit="Unit" sap:filterable="false"/>
+                <Property Name="VolumeUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Volumeneinheit" sap:semantics="unit-of-measure"/>
+                <Property Name="TotalVolume" Type="Edm.Decimal" Precision="31" Scale="3" sap:aggregation-role="measure" sap:unit="VolumeUnit" sap:filterable="false"/>
                 <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Währung" sap:heading="" sap:quickinfo="Währungsschlüssel" sap:value-list="standard" sap:semantics="currency-code"/>
                 <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Bestellmengeneinheit" sap:semantics="unit-of-measure"/>
             </EntityType>
@@ -151,7 +175,7 @@
                 <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="PurchaseOrder" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Einkaufsbeleg" sap:quickinfo="Belegnummer des Einkaufsbelegs"/>
                 <Property Name="PoItem" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Position" sap:quickinfo="Positionsnummer des Einkaufsbelegs"/>
-                <Property Name="PoYear" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension"/>
+                <Property Name="PoYear" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:filter-restriction="single-value" sap:label="" sap:value-list="standard"/>
                 <Property Name="PoMonth" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension"/>
                 <Property Name="MonthYear" Type="Edm.String" MaxLength="7" sap:aggregation-role="dimension"/>
                 <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="SupplierName" sap:label="Lieferant" sap:quickinfo="Kontonummer des Lieferanten" sap:value-list="standard"/>
@@ -173,6 +197,19 @@
                 <Property Name="TotalVolume" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:unit="Unit" sap:filterable="false"/>
                 <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Währung" sap:heading="" sap:quickinfo="Währungsschlüssel" sap:value-list="standard" sap:semantics="currency-code"/>
                 <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Bestellmengeneinheit" sap:semantics="unit-of-measure"/>
+                <Property Name="POCount" Type="Edm.Int32" sap:aggregation-role="measure" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="VendEvaltAnaType" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Lieferant" sap:quickinfo="Kontonummer des Lieferanten bzw. Kreditors"/>
+                <Property Name="FiscalYear" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Geschäftsjahr"/>
+                <Property Name="PostingPeriod" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Buchungsperiode" sap:quickinfo="Geschäftsmonat"/>
+                <Property Name="VendorName" Type="Edm.String" MaxLength="35" sap:aggregation-role="dimension" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="TotalScore" Type="Edm.Decimal" Precision="5" Scale="2" sap:aggregation-role="measure" sap:filterable="false"/>
+                <Property Name="CreatedOn" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Angelegt am" sap:quickinfo="Datum, an dem der Satz hinzugefügt wurde"/>
             </EntityType>
             <EntityType Name="ZI_126_CREATEDBY_VHType" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -213,6 +250,12 @@
                 </Key>
                 <Property Name="PoType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PoTypeDescription" sap:label="Einkaufsbelegart"/>
                 <Property Name="PoTypeDescription" Type="Edm.String" MaxLength="20" sap:label="Belegartbezeichnung" sap:heading="" sap:quickinfo="Bezeichnung der Einkaufsbelegart"/>
+            </EntityType>
+            <EntityType Name="ZI_PO_YEAR_VHType" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PoYear"/>
+                </Key>
+                <Property Name="PoYear" Type="Edm.String" Nullable="false" MaxLength="4"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
                 <Key>
@@ -383,13 +426,16 @@
                 <EntitySet Name="I_Currency" EntityType="cds_zui_po_ovp.I_CurrencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_Plant" EntityType="cds_zui_po_ovp.I_PlantType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="I_PurchasingGroup" EntityType="cds_zui_po_ovp.I_PurchasingGroupType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="PO_ALP_MATERIAL" EntityType="cds_zui_po_ovp.PO_ALP_MATERIALType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="PO_ALP_SUPPLIER" EntityType="cds_zui_po_ovp.PO_ALP_SUPPLIERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="PoOVP" EntityType="cds_zui_po_ovp.PoOVPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="VendEvaltAna" EntityType="cds_zui_po_ovp.VendEvaltAnaType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_126_CREATEDBY_VH" EntityType="cds_zui_po_ovp.ZI_126_CREATEDBY_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZI_PO_MATERIAL_VH" EntityType="cds_zui_po_ovp.ZI_PO_MATERIAL_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZI_PO_SUPPLIER_VH" EntityType="cds_zui_po_ovp.ZI_PO_SUPPLIER_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_PO_TIME_VH" EntityType="cds_zui_po_ovp.ZI_PO_TIME_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ZI_PO_TYPE_VH" EntityType="cds_zui_po_ovp.ZI_PO_TYPE_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_PO_YEAR_VH" EntityType="cds_zui_po_ovp.ZI_PO_YEAR_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__Currencies" EntityType="cds_zui_po_ovp.SAP__Currency" sap:content-version="1"/>
                 <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zui_po_ovp.SAP__UnitOfMeasure" sap:content-version="1"/>
                 <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_zui_po_ovp.SAP__DocumentDescription" sap:content-version="1"/>
@@ -414,6 +460,133 @@
                     <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
                 </AssociationSet>
             </EntityContainer>
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_MATERIALType/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PO_MATERIAL_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ProductName"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialDescription"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BaseUnit"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_MATERIALType/Plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Werk"/>
+                        <PropertyValue Property="CollectionPath" String="I_Plant"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ValuationArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantSupplier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FactoryCalendar"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DefaultPurchasingOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantCategory"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DistributionChannel"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Division"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsMarkedForArchiving"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_MATERIALType/PurchaseOrderType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Einkaufsbelegart"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PO_TYPE_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PurchaseOrderType"/>
+                                    <PropertyValue Property="ValueListProperty" String="PoType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PoTypeDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_po_ovp.PO_ALP_MATERIALType/TimePeriodCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PO_TIME_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TimePeriodCategory"/>
+                                    <PropertyValue Property="ValueListProperty" String="PeriodText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PeriodID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
             <Annotations Target="cds_zui_po_ovp.PO_ALP_SUPPLIERType/Supplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -748,6 +921,23 @@
                 <Annotation Term="Common.FilterDefaultValue" String="VND"/>
                 <Annotation Term="Common.SemanticObject" String="Currency"/>
             </Annotations>
+            <Annotations Target="cds_zui_po_ovp.PoOVPType/PoYear" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PO_YEAR_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PoYear"/>
+                                    <PropertyValue Property="ValueListProperty" String="PoYear"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zui_po_ovp.PoOVPType/Supplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -772,7 +962,6 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-                <Annotation Term="Common.SemanticObject" String="Supplier"/>
             </Annotations>
             <Annotations Target="cds_zui_po_ovp.PoOVPType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
@@ -1029,6 +1218,36 @@
             <Annotations Target="cds_zui_po_ovp.cds_zui_po_ovp_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
             </Annotations>
+            <Annotations Target="cds_zui_po_ovp.cds_zui_po_ovp_Entities/PO_ALP_MATERIAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>TotalVolume</PropertyPath>
+                                <PropertyPath>ItemCount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="TimePeriodCategory"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zui_po_ovp.cds_zui_po_ovp_Entities/PO_ALP_SUPPLIER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.FilterRestrictions">
                     <Record>
@@ -1037,6 +1256,7 @@
                                 <PropertyPath>ID</PropertyPath>
                                 <PropertyPath>TotalAmount</PropertyPath>
                                 <PropertyPath>TotalQuantity</PropertyPath>
+                                <PropertyPath>TotalVolume</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="FilterExpressionRestrictions">
@@ -1071,10 +1291,15 @@
                                 <PropertyPath>ID</PropertyPath>
                                 <PropertyPath>TotalAmount</PropertyPath>
                                 <PropertyPath>TotalVolume</PropertyPath>
+                                <PropertyPath>POCount</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="FilterExpressionRestrictions">
                             <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="PoYear"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
                                 <Record>
                                     <PropertyValue Property="Property" PropertyPath="CreationDate"/>
                                     <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
@@ -1083,6 +1308,27 @@
                                     <PropertyValue Property="Property" PropertyPath="TimePeriodCategory"/>
                                     <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
                                 </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_po_ovp.cds_zui_po_ovp_Entities/VendEvaltAna" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>TotalScore</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -1129,9 +1375,6 @@
                 <Annotation Term="Common.UnitSpecificScale" Path="Decimals"/>
             </Annotations>
             <Annotations Target="cds_zui_po_ovp.PO_ALP_SUPPLIERType/PoNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.SemanticObject" String="ZSO_PO_F15200"/>
-            </Annotations>
-            <Annotations Target="cds_zui_po_ovp.PoOVPType/PurchaseOrder" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.SemanticObject" String="ZSO_PO_F15200"/>
             </Annotations>
             <Annotations Target="cds_zui_po_ovp.cds_zui_po_ovp_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">

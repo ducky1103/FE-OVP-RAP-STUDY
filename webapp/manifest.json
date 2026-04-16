@@ -198,34 +198,18 @@
           "valueSelectionInfo": "Total spend across all POs"
         }
       },
-      "card03_timeline": {
-        "model": "mainModel",
-        "template": "sap.ovp.cards.charts.analytical",
-        "settings": {
-          "title": "Spending Analysis",
-          "subTitle": "Over Time",
-          "entitySet": "PoOVP",
-          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByDate",
-          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByDate",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Amount",
-          "semanticObject": "ZSO_PO_F15200",
-          "action": "display"
-        }
-      },
       "card04_material": {
         "model": "mainModel",
         "template": "sap.ovp.cards.charts.analytical",
         "settings": {
           "title": "Goods Structure",
-          "subTitle": "Top Materials",
           "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByMaterial",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByMaterial",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#NavMaterial",
           "semanticObject": "ZSO_PO_F15500",
           "action": "display",
-             "chartProperties": {
+          "chartProperties": {
             "plotArea": {
               "dataLabel": {
                 "visible": true,
@@ -244,20 +228,31 @@
           "entitySet": "PoOVP",
           "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByPurchGroup",
           "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByPurchGroup",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "semanticObject": "ZSO_PO_F15200",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#NavPurchasingGroup",
+          "semanticObject": "ZSO_PO_F15600",
           "action": "display"
         }
       },
-      "card_po_type": {
+      "CARD_VS01": {
         "template": "sap.ovp.cards.charts.analytical",
         "model": "mainModel",
         "settings": {
-          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ChartByPoType",
-          "entitySet": "PoOVP",
-          "title": "Spending by PO Type",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVByPoType"
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#totalScoreBySupplier",
+          "entitySet": "VendEvaltAna",
+          "title": "{i18n>supplierEvaluation}",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ToVendorScoreAnalysis",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVQTotalScoreBySupplier"
+        }
+      },
+      "CARD_VS02": {
+        "template": "sap.ovp.cards.charts.analytical",
+        "model": "mainModel",
+        "settings": {
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#totalScoreByPeriod",
+          "entitySet": "VendEvaltAna",
+          "title": "{i18n>everageScoreByPeriod}",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ToVendorScoreAnalysis",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVQTotalScoreByPeriod"
         }
       }
     },
